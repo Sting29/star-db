@@ -125,8 +125,8 @@
     box-shadow: 140px 0 0 0 #df1317;
   }
   .lds-double-ring {
-    width: 77px !important;
-    height: 77px !important;
+    width: 85px !important;
+    height: 85px !important;
     -webkit-transform: translate(-38.5px, -38.5px) scale(0.385) translate(38.5px, 38.5px);
     transform: translate(-38.5px, -38.5px) scale(0.385) translate(38.5px, 38.5px);
   }
@@ -134,5 +134,5 @@
   .lds-css {
     /* width: 200px;
     height: 200px; */
-    margin: 0 auto;
+    margin: 38px auto;
   }
