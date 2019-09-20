@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import SwapiService from '../../services/swapiService';
 import Spinner from '../Spinner';
+import ErrorButton from '../ErrorButton';
 
 import './PersonDetails.css';
+
 
 export default class PersonDetails extends Component {
 
@@ -33,7 +35,7 @@ export default class PersonDetails extends Component {
     this.swapiService.getPerson(personId)
     .then((person) => {
       this.setState({ person,
-       loading: false})
+       loading: false});
     });
   };
 
@@ -58,7 +60,6 @@ export default class PersonDetails extends Component {
 }
 
 const PersonDetailsView = ({person}) => {
-
   const { id, name, gender, 
     birthYear, eyeColor } = person;
   
@@ -83,6 +84,7 @@ const PersonDetailsView = ({person}) => {
               <span>{eyeColor}</span>
             </li>
           </ul>
+          <ErrorButton />
         </div>
     </React.Fragment>
   );

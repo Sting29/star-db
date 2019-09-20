@@ -2,16 +2,17 @@ import React, {Component} from 'react';
 
 import Header from '../Header';
 import RandomPlanet from '../RandomPlanet';
-import ItemList from '../ItemList';
-import PersonDetails from '../PersonDetails';
+import ErrorButton from '../ErrorButton/';
+import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 
 import './App.css';
+import PeoplePage from '../PeoplePage/PeoplePage';
 
 export default class App extends Component {
 
     state = {
         showRandomPlanet: true,
-        selectedPerson: 5
+        hasError: false
     };
 
     toggleRandomPlanet = () => {
@@ -22,13 +23,18 @@ export default class App extends Component {
         });
     };
 
-    onPersonSelected = (id) => {
-        this.setState({
-            selectedPerson: id
-        });
-    };
+
+
+    componentDidCatch() {
+        console.log('componentDidCatch()');
+        this.setState({hasError: true})
+    }
 
     render () {
+
+        if(this.state.hasError) {
+            return <ErrorIndicator />
+        }
 
         const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
@@ -37,20 +43,20 @@ export default class App extends Component {
                 <Header />
                 {planet}
 
-                <button
-                    className="toggle-planet btn btn-warning btn-lg"
-                    onClick={this.toggleRandomPlanet}>
-                        Toggle Random Planet
+                <div className="row mb2 button-row">
+                    <button
+                        className="toggle-planet btn btn-warning btn-lg"
+                        onClick={this.toggleRandomPlanet}>
+                            Toggle Random Planet
                     </button>
-
-                <div className="row mb2">
-                    <div className="col-md-6">
-                        <ItemList onItemSelected={this.onPersonSelected} />
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails personId={this.state.selectedPerson} />
-                    </div>
+                    <ErrorButton />
                 </div>
+               
+                <PeoplePage />
+
+                <PeoplePage />
+
+                <PeoplePage />
             </div>
         );  
     };
