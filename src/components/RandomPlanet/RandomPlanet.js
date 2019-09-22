@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import SwapiService from '../../services/swapiService';
 import Spinner from '../Spinner';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
+
+import SwapiService from '../../services/swapiService';
 
 import './RandomPlanet.css';
 
@@ -41,11 +42,8 @@ export default class RandomPlanet extends Component {
   };
 
   updatePlanet = () => {
-    console.log('update');
     const id = Math.floor(Math.random()*17) + 2;
     //const id = Math.floor(Math.random() * 61 + 1);
-    //const id =15000;
-
     this.swapiService
       .getPlanet(id)
       .then(this.onPlanetLoaded)
@@ -53,8 +51,6 @@ export default class RandomPlanet extends Component {
   }
 
   render() {
-    console.log('render');
-
     const { planet, loading, error } = this.state;
 
     const hasData = !(loading || error);
@@ -100,5 +96,5 @@ const PlanetView = ({ planet }) => {
           </ul>
         </div>
     </React.Fragment>
-  )
-}
+  );
+};
