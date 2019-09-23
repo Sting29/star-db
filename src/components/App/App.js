@@ -16,6 +16,9 @@ import {
 
 
 import SwapiService from '../../services/swapiService';
+// import dummySwapiService from '../../services/dummySwapiService';   // for tests
+
+import { SwapiServiceProvider } from '../SwapiServiceContext';
 
 import './App.css';
 
@@ -41,35 +44,37 @@ export default class App extends Component {
 
         return (
             <ErrorBoundry>
-                <div className="stardb-app">
-                    <Header />
-                    {/* {planet}
+                <SwapiServiceProvider value={this.swapiService}>
+                    <div className="stardb-app">
+                        <Header />
+                        {/* {planet}
 
-                    <div className="row mb2 button-row">
-                        <button
-                            className="toggle-planet btn btn-warning btn-lg"
-                            onClick={this.toggleRandomPlanet}>
-                                Toggle Random Planet
-                        </button>
-                    </div> */}
+                        <div className="row mb2 button-row">
+                            <button
+                                className="toggle-planet btn btn-warning btn-lg"
+                                onClick={this.toggleRandomPlanet}>
+                                    Toggle Random Planet
+                            </button>
+                        </div> */}
 
-                    {/* <Row
-                        left={personDetails}
-                        right={starshipDetails} /> */}
+                        {/* <Row
+                            left={personDetails}
+                            right={starshipDetails} /> */}
 
-                    <PersonDetails itemId={11} />
+                        <PersonDetails itemId={11} />
 
-                    <PlanetDetails itemId={5} />
+                        <PlanetDetails itemId={5} />
 
-                    <StarshipDetails itemId={9} />
+                        <StarshipDetails itemId={9} />
 
-                    <PersonList />
+                        <PersonList />
 
-                    <StarshipList />
+                        <StarshipList />
 
-                    <PlanetList />
+                        <PlanetList />
 
-                </div>
+                    </div>
+                </SwapiServiceProvider>
             </ErrorBoundry>            
         );  
     };
