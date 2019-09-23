@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     padding: 1rem;
+    margin-bottom: 2vh;
   }
   
   .item-details .item-image {
@@ -21,10 +22,4 @@
   .item-details button {
     margin-top: 5px;
     margin-bottom: 0;
-  }
-
-  @media (max-width: 769px) {
-    .item-details {
-          margin-top: 1rem;
-    }
   }
